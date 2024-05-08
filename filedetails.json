@@ -1,6 +1,8 @@
 {
   "ovpn_file":[
-    {"id":0,"file":"client
+    {"id":0,"file":"
+setenv FORWARD_COMPATIBLE 1  
+client
 server-poll-timeout 4
 nobind
 remote 34.35.36.141 1194 udp
@@ -13,11 +15,16 @@ remote 34.35.36.141 1194 udp
 remote 34.35.36.141 1194 udp
 dev tun
 dev-type tun
-remote-cert-tls server
-tls-version-min 1.2
+ns-cert-type server
+setenv opt tls-version-min 1.0 or-highest
 reneg-sec 604800
+sndbuf 0
+rcvbuf 0
+# NOTE: LZO commands are pushed by the Access Server at connect time.
+# NOTE: The below line doesn't disable LZO.
+comp-lzo no
 verb 3
-push-peer-info
+setenv PUSH_PEER_INFO
 
 <ca>
 -----BEGIN CERTIFICATE-----
@@ -38,6 +45,7 @@ GMEXqtuvEl0EPa6h+C1ZG3UNTogpcaLVEH4kTMR4sY0EIq12AF/15R4ZBaYpvJ6J
 aDbSgwKgjjTlhHdad70mey0ueRw29HlJ4afDy5lya5Ad7XlZiuDEXCCt6ds=
 -----END CERTIFICATE-----
 </ca>
+
 <cert>
 -----BEGIN CERTIFICATE-----
 MIIC7jCCAdagAwIBAgIBAzANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDDApPcGVu
@@ -58,6 +66,8 @@ oybP5i0AuQaLw5e67BxQqCZLAksUzO3H4fCgOb6rK1i69u8dVq5Ka6SAnNTLeb6B
 HfSODvrR3jFiTigVC7vPnLnMFVIou17ws65pyjNfamCdTQ==
 -----END CERTIFICATE-----
 </cert>
+
+
 <key>
 -----BEGIN PRIVATE KEY-----
 MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDGO9W9B79VcM0X
@@ -88,7 +98,10 @@ TmcqAuPAIsyw605HVM6n/L9r50qDEpVqgBoXxiacsJjXgw8HGPTYtTBr1/XBcG3u
 sCZTcK1Qnw6s5QNF/lIh3XA=
 -----END PRIVATE KEY-----
 </key>
-<tls-crypt>
+
+key-direction 1
+<tls-auth>
+
 #
 # 2048 bit OpenVPN static key (Server Agent)
 #
@@ -110,8 +123,12 @@ b5c5b0adae1b0e52a5e871eb6e1397e6
 4f6f7c429a3d099e955a856fca38dc90
 f8afd7f3028e5faf87ff3d4d8a750a69
 -----END OpenVPN Static key V1-----
-</tls-crypt>"},
-    {"id":1,"file":"client
+</tls-auth>"},
+
+
+    {"id":1,"file":"
+    setenv FORWARD_COMPATIBLE 1 
+client
 server-poll-timeout 4
 nobind
 remote 104.196.225.192 1194 udp
@@ -124,11 +141,16 @@ remote 104.196.225.192 1194 udp
 remote 104.196.225.192 1194 udp
 dev tun
 dev-type tun
-remote-cert-tls server
-tls-version-min 1.2
+ns-cert-type server
+setenv opt tls-version-min 1.0 or-highest
 reneg-sec 604800
+sndbuf 0
+rcvbuf 0
+# NOTE: LZO commands are pushed by the Access Server at connect time.
+# NOTE: The below line doesn't disable LZO.
+comp-lzo no
 verb 3
-push-peer-info
+setenv PUSH_PEER_INFO
 
 <ca>
 -----BEGIN CERTIFICATE-----
@@ -199,7 +221,9 @@ HZ2Td548YcsGcgVxW3xjRbzSKhjDxAqATCwU7NvofdunjpRRSgnSnrVo0xRpSy9R
 L4zzBeBRhfjVv80JMFXgkPA=
 -----END PRIVATE KEY-----
 </key>
-<tls-crypt>
+key-direction 1
+<tls-auth>
+
 #
 # 2048 bit OpenVPN static key (Server Agent)
 #
@@ -221,6 +245,6 @@ fd984472d08936704380e65f1f86776b
 5b5f914d4582c53c924cb47fa344650b
 a8b5ca30dc881a2abde66da1261dc393
 -----END OpenVPN Static key V1-----
-</tls-crypt>"},
+</tls-auth>"},
 ]
 }
