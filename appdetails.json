@@ -2,9 +2,9 @@
   "ads":"true",
   "update":[{
     "version":"2.8.1600",
-    "title":"Welcome",
-    "description":"The App is created by Harshit Saxena,Karan Thapa and Udayaditya Panwar",
-    "size":""
+    "title":"This app is now Open Source",
+    "description":"The App is available at github.com/gayankuruppu/android-vpn-client-ics-openvpn",
+    "size":"https://git.io/JeY69"
   }],
   "blocked":[
     {"id":0, "app":"com.android.game"},
@@ -17,6 +17,6 @@
   ],
   "free":[
     {"id":0, "file":0, "city":"Australia","country":"Australia","image":"australia","ip":"34.35.36.141","active":"true","signal":"a"},
-    {"id":1, "file":0, "city":"United States","country":"United States","image":"unitedstates","ip":"104.196.225.192","active":"true","signal":"b"}
+    {"id":1, "file":1, "city":"United States","country":"United States","image":"unitedstates","ip":"104.196.225.192","active":"true","signal":"b"}
   ]
 }
